@@ -6,4 +6,9 @@ public interface ServiceProcess {
 
 	public void insertToBBDD(Greeting gre);
 	
+	public void methodBefore() ;
+	public void methodAfter();
+	public void methodAfterThrowing();
+	public void methodAfterReturning();
+	
 }
