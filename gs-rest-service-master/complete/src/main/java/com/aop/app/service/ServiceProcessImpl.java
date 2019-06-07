@@ -17,4 +17,36 @@ public class ServiceProcessImpl  implements ServiceProcess{
 		}
 	}
 
+	@Override
+	public void methodBefore() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void methodAfter() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void methodAfterThrowing() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void methodAfterReturning() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public void aspectCall() {
+		System.out.println("Applicando asvices para el primer tiempo");
+	}
+	
+	public void myMethod() {
+		System.out.println("Ente es un metodo extra");
+	}
+	
 }
