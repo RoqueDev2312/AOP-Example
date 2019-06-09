@@ -8,6 +8,9 @@ import com.aop.app.util.TimeUtils;
 import java.sql.Timestamp;
 
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -16,8 +19,8 @@ import org.aspectj.lang.annotation.Before;
 @Component
 public class AspectProcess {
 
-	@Around("execution(public void com.aop.app.service.ServiceProcessImpl.insertToBBDD(..)) && args(gre)")
-	public void insertToBBDD(ProceedingJoinPoint punto, Greeting gre) throws Throwable {
+	@Around("execution(public void com.aop.app.service.ServiceProcessImpl.methodAround(..)) && args(gre)")
+	public void methodAround(ProceedingJoinPoint punto, Greeting gre) throws Throwable {
 		Timestamp time1 = TimeUtils.getTimestamp();
 		punto.proceed();
 		Timestamp time2 = TimeUtils.getTimestamp();
@@ -28,11 +31,24 @@ public class AspectProcess {
 		
 	}
 
-
-	@Before("execution(public void com.aop.app.service.ServiceProcessImpl.aspectCall())")
-	public void aspectCall() {
-		System.out.println("Before advice is executed...");
-		
+	@Before("execution(public void com.aop.app.service.ServiceProcessImpl.methodBefore())")
+	public void methodBefore() {
+		System.out.println("@Before advice is executed...");
+	}
+	
+	@After("execution(public void com.aop.app.service.ServiceProcessImpl.methodAfter())")
+	public void methodAfter() {
+		System.out.println("@After advice is executed...");
+	}
+	
+	@AfterReturning("execution(public void com.aop.app.service.ServiceProcessImpl.methodAfterReturning())")
+	public void methodAfterReturning() {
+		System.out.println("@AfterReturning advice is executed...");
+	}
+	
+	@AfterThrowing("execution(public void com.aop.app.service.ServiceProcessImpl.methodAfterThrowing())")
+	public void methodAfterThrowing() {
+		System.out.println("@AfterThrowing advice is executed...");
 	}
 	
 }	

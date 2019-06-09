@@ -4,7 +4,7 @@ import com.aop.app.dto.Greeting;
 
 public interface ServiceProcess {
 
-	public void insertToBBDD(Greeting gre);
+	public void methodAround(Greeting gre);
 	
 	public void methodBefore() ;
 	public void methodAfter();
