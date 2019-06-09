@@ -1,1 +1,6 @@
-carga inicial del proyecto AOP EXAMPLE
+Json de Ejemplo:
+
+{
+    "id": 1,
+    "content": "Hello, World!"
+}
