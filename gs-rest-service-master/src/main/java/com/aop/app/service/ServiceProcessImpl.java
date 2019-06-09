@@ -11,7 +11,7 @@ public class ServiceProcessImpl  implements ServiceProcess{
 	public void insertToBBDD(Greeting gre) {
 		try {
 			gre.setContent("parametrizado desde Metodo para ser tratado por el aspecto");
-			Thread.sleep(50000);
+			Thread.sleep(500);
 		} catch (InterruptedException e) {
 			System.out.println("Error en la espera de insercion...");
 		}
