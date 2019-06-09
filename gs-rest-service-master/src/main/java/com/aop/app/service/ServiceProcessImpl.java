@@ -1,5 +1,8 @@
 package com.aop.app.service;
 
+import javax.management.RuntimeErrorException;
+
+import org.aspectj.lang.annotation.Around;
 import org.springframework.stereotype.Service;
 
 import com.aop.app.dto.Greeting;
@@ -8,7 +11,7 @@ import com.aop.app.dto.Greeting;
 public class ServiceProcessImpl  implements ServiceProcess{
 
 	@Override
-	public void insertToBBDD(Greeting gre) {
+	public void methodAround(Greeting gre) {
 		try {
 			gre.setContent("parametrizado desde Metodo para ser tratado por el aspecto");
 			Thread.sleep(500);
@@ -19,34 +22,23 @@ public class ServiceProcessImpl  implements ServiceProcess{
 
 	@Override
 	public void methodBefore() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Method before ejecutandose...");
 	}
 
 	@Override
-	public void methodAfter() {
-		// TODO Auto-generated method stub
-		
+	public void methodAfter() {	
+		System.out.println("Method After ejecutandose...");
 	}
-
-	@Override
-	public void methodAfterThrowing() {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 	@Override
 	public void methodAfterReturning() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Method AfterReturning ejecutandose...");
 	}
 	
-	public void aspectCall() {
-		System.out.println("Applicando asvices para el primer tiempo");
+	@Override
+	public void methodAfterThrowing() {
+		System.out.println("Method AfterReturning ejecutandose...");
+		throw new RuntimeException();
 	}
-	
-	public void myMethod() {
-		System.out.println("Ente es un metodo extra");
-	}
-	
+
 }
