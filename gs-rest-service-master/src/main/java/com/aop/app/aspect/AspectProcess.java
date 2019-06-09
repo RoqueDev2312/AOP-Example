@@ -7,6 +7,7 @@ import com.aop.app.util.TimeUtils;
 
 import java.sql.Timestamp;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -28,27 +29,28 @@ public class AspectProcess {
 				+ TimeUtils.calculateMilliseconds(time2, time1) + " Milisegundos";
 		
 		System.out.println("Mensaje a procesar desde AOP: "+gre.getContent() +" TRAZA: "+totalTime);
+		System.out.println("Tostring: "+punto.toString());
 		
 	}
 
 	@Before("execution(public void com.aop.app.service.ServiceProcessImpl.methodBefore())")
-	public void methodBefore() {
-		System.out.println("@Before advice is executed...");
+	public void methodBefore(JoinPoint joinpoint) {
+		System.out.println("@Before advice is executed... "+joinpoint.toString());
 	}
 	
 	@After("execution(public void com.aop.app.service.ServiceProcessImpl.methodAfter())")
-	public void methodAfter() {
-		System.out.println("@After advice is executed...");
+	public void methodAfter(JoinPoint joinpoint) {
+		System.out.println("@After advice is executed... "+joinpoint.toString());
 	}
 	
 	@AfterReturning("execution(public void com.aop.app.service.ServiceProcessImpl.methodAfterReturning())")
-	public void methodAfterReturning() {
-		System.out.println("@AfterReturning advice is executed...");
+	public void methodAfterReturning(JoinPoint joinpoint) {
+		System.out.println("@AfterReturning advice is executed... "+joinpoint.toString());
 	}
 	
 	@AfterThrowing("execution(public void com.aop.app.service.ServiceProcessImpl.methodAfterThrowing())")
-	public void methodAfterThrowing() {
-		System.out.println("@AfterThrowing advice is executed...");
+	public void methodAfterThrowing(JoinPoint joinpoint) {
+		System.out.println("@AfterThrowing advice is executed... "+joinpoint.toString());
 	}
 	
 }	
